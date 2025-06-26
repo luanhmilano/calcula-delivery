@@ -1,5 +1,6 @@
 import { DashboardCard } from "../../components/DashboardCard";
 import { Sidebar } from "../../components/Sidebar";
+import { DicaRapidaFooter } from "../../components/DicaRapidaFooter";
 import { PieChartIcon, BarChart2, DollarSign, PlusCircle } from "lucide-react";
 import type { Page, Prato, User, PratoStatus } from "../../types";
 
@@ -7,7 +8,7 @@ interface DashboardProps {
     navigateTo: (page: Page, prato?: Prato) => void;
     user: User;
     pratos: Prato[];
-    onLogout: () => void;
+    onLogout?: () => void;
 }
 
 export const DashboardPage: React.FC<DashboardProps> = ({ navigateTo, user, pratos }) => {
@@ -27,7 +28,7 @@ export const DashboardPage: React.FC<DashboardProps> = ({ navigateTo, user, prat
     return (
         <div className="flex min-h-screen bg-gray-100">
             <Sidebar navigateTo={navigateTo} activePage="dashboard" />
-            <main className="flex-1 p-6 sm:p-10">
+            <main className="flex-1 p-6 sm:p-10 pb-24">
                 <div className="container mx-auto">
                     <div className="flex justify-between items-center mb-8">
                         <div>
@@ -40,14 +41,12 @@ export const DashboardPage: React.FC<DashboardProps> = ({ navigateTo, user, prat
                         </button>
                     </div>
 
-                    {/* Cards de Resumo */}
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-                        <DashboardCard title="Total de Pratos" value={pratos.length} icon={PieChartIcon} colorClass="bg-blue-500" navigateTo={navigateTo} page="listaPratos" />
+                        <DashboardCard title="Total de Pratos" value={pratos.length.toString()} icon={PieChartIcon} colorClass="bg-blue-500" navigateTo={navigateTo} page="listaPratos" />
                         <DashboardCard title="Margem Média" value={`${margemMedia}%`} icon={BarChart2} colorClass="bg-green-500" navigateTo={navigateTo} page="relatorios"/>
-                        <DashboardCard title="Pratos com Prejuízo" value={pratosComPrejuizo} icon={DollarSign} colorClass="bg-red-500" navigateTo={navigateTo} page="listaPratos" />
+                        <DashboardCard title="Pratos com Prejuízo" value={pratosComPrejuizo.toString()} icon={DollarSign} colorClass="bg-red-500" navigateTo={navigateTo} page="listaPratos" />
                     </div>
 
-                    {/* Lista de Últimos Pratos */}
                     <div className="bg-white p-6 rounded-2xl shadow-md">
                         <h3 className="text-xl font-bold text-gray-800 mb-4">Últimos Pratos Simulados</h3>
                         <div className="overflow-x-auto">
@@ -77,6 +76,7 @@ export const DashboardPage: React.FC<DashboardProps> = ({ navigateTo, user, prat
                     </div>
                 </div>
             </main>
+            <DicaRapidaFooter navigateTo={navigateTo} />
         </div>
     );
 };
