@@ -11,6 +11,9 @@ import { RelatoriosPage } from './pages/Relatorios/RelatoriosPage';
 import { PerfilPage } from './pages/Perfil/PerfilPage';
 import { CadastroPage } from './pages/CadastroPage';
 import { RecuperarSenhaPage } from './pages/RecuperarSenhaPage';
+import { AprendaAPrecificarPage } from './pages/Aprenda/AprendaAPrecificarPage';
+import { CenariosPage } from './pages/Cenarios/CenariosPage';
+import { CentralDeAjudaPage } from './pages/CentralDeAjuda/CentralDeAjudaPage';
 
 const App: React.FC = () => {
   const [page, setPage] = useState<Page>('landing');
@@ -49,6 +52,10 @@ const App: React.FC = () => {
     setPratos(pratos.filter(p => p.id !== id));
   };
 
+  const handleApplyScenario = (pratoAtualizado: Prato) => {
+    setPratos(pratos.map(p => p.id === pratoAtualizado.id ? pratoAtualizado : p));
+};
+
   const renderPage = () => {
     if (!user && !['landing', 'login', 'cadastro', 'recuperarSenha', 'simuladorTeste'].includes(page)) {
       return <LoginPage navigateTo={navigateTo} onLogin={handleLogin} />;
@@ -74,6 +81,15 @@ const App: React.FC = () => {
         return <RelatoriosPage navigateTo={navigateTo} pratos={pratos} />;
       case 'perfil':
         return <PerfilPage navigateTo={navigateTo} user={user!} />;
+      case 'aprenda':
+        return <AprendaAPrecificarPage navigateTo={navigateTo} />;
+      case 'cenarios':
+            if (!selectedPrato) {
+                 return <ListaPratosPage navigateTo={navigateTo} pratos={pratos} onDelete={()=>{}} />;
+            }
+            return <CenariosPage navigateTo={navigateTo} pratoOriginal={selectedPrato} onApplyScenario={handleApplyScenario} />;
+      case 'centralDeAjuda':
+        return <CentralDeAjudaPage navigateTo={navigateTo} />;
       default:
         return <LandingPage navigateTo={navigateTo} />;
     }

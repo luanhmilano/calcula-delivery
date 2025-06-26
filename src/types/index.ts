@@ -25,4 +25,7 @@ export type Page =
   | 'simuladorTeste' 
   | 'listaPratos' 
   | 'relatorios' 
-  | 'perfil';
+  | 'perfil'
+  | 'aprenda'
+  | 'cenarios'
+  | 'centralDeAjuda';

@@ -1,4 +1,4 @@
-import { DollarSign, BarChart2, PlusCircle, Settings, PieChart as PieChartIcon, BarChart3, type LucideIcon } from 'lucide-react';
+import { DollarSign, BarChart2, PlusCircle, Settings, PieChart as PieChartIcon, BarChart3, type LucideIcon, BookOpen, LifeBuoy } from 'lucide-react';
 import type { Page } from '../types';
 
 interface MenuItem {
@@ -18,6 +18,8 @@ export const Sidebar = ({ navigateTo, activePage }: SidebarProps) => {
         { id: 'listaPratos', label: 'Meus Pratos', icon: PieChartIcon },
         { id: 'simulador', label: 'Simular Novo Prato', icon: PlusCircle },
         { id: 'relatorios', label: 'Relatórios', icon: BarChart3 },
+        { id: 'aprenda', label: 'Aprenda a Precificar', icon: BookOpen },
+        { id: 'centralDeAjuda', label: 'Central de Ajuda', icon: LifeBuoy },
         { id: 'perfil', label: 'Configurações', icon: Settings },
     ];
     
