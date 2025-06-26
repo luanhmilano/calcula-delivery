@@ -7,19 +7,19 @@ interface CadastroPageProps {
   onLogin: (email: string) => void;
 }
 
-export const CadastroPage = ({ navigateTo, onLogin }: CadastroPageProps) => {
+export const CadastroPage: React.FC<CadastroPageProps> = ({ navigateTo, onLogin }) => {
   const [email, setEmail] = useState('');
-  const handleSubmit = (e: { preventDefault: () => void; }) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (email) onLogin(email);
   };
     
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-2xl shadow-lg">
+    <div className="flex items-center justify-center min-h-screen bg-gray-100 px-4">
+      <div className="w-full max-w-md p-6 sm:p-8 space-y-6 bg-white rounded-2xl shadow-lg">
         <div className="text-center">
           <PlusCircle className="mx-auto h-12 w-12 text-green-600" />
-          <h2 className="mt-4 text-3xl font-bold text-gray-900">Crie sua conta</h2>
+          <h2 className="mt-4 text-2xl sm:text-3xl font-bold text-gray-900">Crie sua conta</h2>
           <p className="mt-2 text-sm text-gray-600">Comece a precificar com estratégia.</p>
         </div>
         <form className="space-y-6" onSubmit={handleSubmit}>

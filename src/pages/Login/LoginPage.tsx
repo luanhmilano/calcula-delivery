@@ -7,21 +7,21 @@ interface LoginPageProps {
   onLogin: (email: string) => void;
 }
 
-export const LoginPage = ({ navigateTo, onLogin }: LoginPageProps) => {
+export const LoginPage: React.FC<LoginPageProps> = ({ navigateTo, onLogin }) => {
   const [email, setEmail] = useState('henrique@marmitas.com');
   const [password, setPassword] = useState('123456');
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onLogin(email);
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-2xl shadow-lg">
+    <div className="flex items-center justify-center min-h-screen bg-gray-100 px-4">
+      <div className="w-full max-w-md p-6 sm:p-8 space-y-6 bg-white rounded-2xl shadow-lg">
         <div className="text-center">
           <DollarSign className="mx-auto h-12 w-12 text-green-600" />
-          <h2 className="mt-4 text-3xl font-bold text-gray-900">Seja bem-vindo de volta!</h2>
+          <h2 className="mt-4 text-2xl sm:text-3xl font-bold text-gray-900">Seja bem-vindo de volta!</h2>
           <p className="mt-2 text-sm text-gray-600">Faça login para gerenciar seus preços.</p>
         </div>
         <form className="space-y-6" onSubmit={handleSubmit}>
