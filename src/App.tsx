@@ -54,7 +54,11 @@ const App: React.FC = () => {
 
   const handleApplyScenario = (pratoAtualizado: Prato) => {
     setPratos(pratos.map(p => p.id === pratoAtualizado.id ? pratoAtualizado : p));
-};
+  };
+
+  const handleUserUpdate = (updatedUser: User) => {
+        setUser(updatedUser);
+  };
 
   const renderPage = () => {
     if (!user && !['landing', 'login', 'cadastro', 'recuperarSenha', 'simuladorTeste'].includes(page)) {
@@ -80,7 +84,7 @@ const App: React.FC = () => {
       case 'relatorios':
         return <RelatoriosPage navigateTo={navigateTo} pratos={pratos} />;
       case 'perfil':
-        return <PerfilPage navigateTo={navigateTo} user={user!} />;
+        return <PerfilPage navigateTo={navigateTo} user={user!} onUpdateUser={handleUserUpdate} />;
       case 'aprenda':
         return <AprendaAPrecificarPage navigateTo={navigateTo} />;
       case 'cenarios':

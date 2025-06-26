@@ -15,10 +15,10 @@ export const RecuperarSenhaPage = ({navigateTo}: RecuperarSenhaPageProps) => {
     };
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gray-100">
-            <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-2xl shadow-lg">
+        <div className="flex items-center justify-center min-h-screen bg-gray-100 px-4">
+            <div className="w-full max-w-md p-6 sm:p-8 space-y-6 bg-white rounded-2xl shadow-lg">
                 <div className="text-center">
-                    <h2 className="mt-4 text-3xl font-bold text-gray-900">Recuperar Senha</h2>
+                    <h2 className="mt-4 text-2xl sm:text-3xl font-bold text-gray-900">Recuperar Senha</h2>
                     <p className="mt-2 text-sm text-gray-600">Digite seu e-mail e enviaremos um link para redefinir sua senha.</p>
                 </div>
                 <form className="space-y-4" onSubmit={handleSubmit}>

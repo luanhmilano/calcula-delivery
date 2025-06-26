@@ -31,7 +31,7 @@ export const CustosForm: React.FC<CustosFormProps> = ({
         <>
             <div className="bg-white p-6 rounded-2xl shadow-md">
                 <div className="flex justify-between items-center mb-4">
-                    <h3 className="text-xl font-bold text-gray-700">3. Custos Gerais e Modo Evento</h3>
+                    <h3 className="text-xl font-bold text-gray-700">4. Custos Gerais e Modo Evento</h3>
                     <div className="flex items-center">
                         <label htmlFor="modo-evento" className="mr-2 text-sm font-medium text-gray-900">Modo Evento</label>
                         <input
