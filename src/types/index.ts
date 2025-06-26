@@ -13,6 +13,12 @@ export interface User {
     nome: string;
     email: string;
     nomeNegocio: string;
+    fotoUrl?: string; 
+    localizacao?: string; 
+    tipoConta?: 'Básica' | 'Premium';
+    custosFixosMensais?: number; 
+    pratosVendidosMes?: number; 
+    margemMinimaPadrao?: number; 
 }
 
 export type Page = 
@@ -29,3 +35,20 @@ export type Page =
   | 'aprenda'
   | 'cenarios'
   | 'centralDeAjuda';
+
+export type UnidadePreco = 'kg' | 'g' | 'l' | 'ml' | 'un' | 'dúzia';
+
+export interface Ingrediente {
+    id: number;
+    nome: string;
+    precoPago: number;
+    unidadePreco: UnidadePreco;
+    qtdUsada: number;
+    unidadeUsada: 'g' | 'kg' | 'ml' | 'l' | 'un';
+}
+
+export interface OutroCusto {
+    id: number;
+    nome: string;
+    valor: number;
+}
