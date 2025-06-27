@@ -1,12 +1,11 @@
-# $ Calcula Delivery
+# $ Calcula Delivery - Protótipo de Interface
 
-**Protótipo de Interface para Cálculo de Preços de Delivery**
-
-> ⚠️ **IMPORTANTE**: Este é um projeto acadêmico desenvolvido exclusivamente para a disciplina de **Design de Interface Humano-Computador (IHC)** do curso de **Análise e Desenvolvimento de Sistemas** do IFPA. Trata-se de um protótipo funcional com fins educacionais e não deve ser utilizado em ambiente de produção.
+> ⚠️ **IMPORTANTE**: Este projeto tem fins exclusivamente educacionais. É uma demonstração prática da metodologia de design de interface e não deve ser utilizado em um ambiente de produção real. Os dados são simulados e a aplicação não possui um backend persistente.
 
 ## 📋 Sobre o Projeto
 
-O **Calcula Delivery** é um protótipo de aplicação web desenvolvido para demonstrar a aplicação prática dos conceitos de design de interface e experiência do usuário. O projeto simula uma plataforma para cálculo de preços de delivery, permitindo que restaurantes e estabelecimentos possam estimar custos de entrega de forma intuitiva e eficiente.
+* O **Calcula Delivery** é um protótipo funcional de alta fidelidade desenvolvido como projeto final para a disciplina de Design de Interface Humano-Computador (IHC). A aplicação simula uma ferramenta web onde donos de pequenos negócios de alimentação, como marmitarias e lancherias virtuais, podem calcular o preço de venda de seus pratos de forma estratégica e intuitiva.
+* O objetivo é transformar o complexo processo de precificação em uma tarefa simples e visual, ajudando o pequeno empreendedor a entender seus custos, definir margens de lucro sustentáveis e tomar decisões mais seguras, evitando o comum problema de "vender muito e lucrar pouco".
 
 ### 🎯 Objetivos Acadêmicos
 
@@ -14,35 +13,6 @@ O **Calcula Delivery** é um protótipo de aplicação web desenvolvido para dem
 - Demonstrar o processo completo de desenvolvimento de interface centrada no usuário
 - Implementar um protótipo navegável funcional
 - Validar conceitos de usabilidade e experiência do usuário
-
-## 🔬 Metodologia de Design
-
-O projeto foi desenvolvido seguindo a metodologia dos **5 Planos de Design de Interface**:
-
-### 1. 📊 **Estratégia**
-- **Briefing**: Definição dos objetivos e necessidades do projeto
-- **Protopersonas**: Criação de perfis de usuários-alvo
-- **Análise de requisitos**: Identificação das funcionalidades essenciais
-
-### 2. 📝 **Escopo**
-- Definição das funcionalidades principais
-- Especificação de requisitos funcionais e não-funcionais
-- Delimitação do MVP (Produto Mínimo Viável)
-
-### 3. 🏗️ **Estrutura**
-- Arquitetura da informação
-- Fluxos de navegação
-- Organização hierárquica do conteúdo
-
-### 4. 🖼️ **Esqueleto**
-- Wireframes de baixa e média fidelidade
-- Layout das páginas principais
-- Definição de componentes de interface
-
-### 5. 🎨 **Superfície**
-- Design visual final
-- Paleta de cores e tipografia
-- Elementos gráficos e iconografia
 
 ## 🛠️ Tecnologias Utilizadas
 
@@ -103,7 +73,7 @@ calcula-delivery/
 
 1. **Clone o repositório**
    ```bash
-   git clone [URL_DO_REPOSITORIO]
+   git clone https://github.com/luanhmilano/calcula-delivery.git
    cd calcula-delivery
    ```
 
@@ -119,7 +89,7 @@ calcula-delivery/
 
 4. **Acesse a aplicação**
    ```
-   http://localhost:5173
+   http://localhost:5173/calcula-delivery/
    ```
 
 ### Scripts Disponíveis
@@ -132,30 +102,21 @@ calcula-delivery/
 
 ## 🎨 Funcionalidades Implementadas
 
-### 🏠 **Dashboard**
-- Visão geral dos dados de delivery
-- Cards informativos com métricas principais
-- Interface responsiva e intuitiva
+O protótipo é navegável e simula as seguintes funcionalidades:
 
-### 🧮 **Simulador de Preços**
-- Calculadora interativa para custos de delivery
-- Diferentes cenários de cálculo
-- Visualização em tempo real dos resultados
+- 👤 Autenticação: Telas de Login, Cadastro e Recuperação de Senha.
 
-### 📊 **Relatórios**
-- Geração de relatórios em PDF
-- Gráficos e visualizações de dados
-- Exportação de informações
+- 🏠 Dashboard: Painel principal com visão geral, métricas e atalhos.
 
-### 🍽️ **Gestão de Cardápio**
-- Lista de pratos com preços
-- Interface para visualização de produtos
-- Dados mockados para demonstração
+- 🧮 Simulador de Preços: Ferramenta central para calcular o preço de venda, incluindo CMV, custos diretos, indiretos e taxas.
 
-### 📚 **Central de Ajuda**
-- FAQ interativo
-- Seção educativa sobre delivery
-- Suporte ao usuário
+- 🍽️ Gestão de Pratos: Lista de todos os pratos salvos com indicadores visuais de rentabilidade.
+
+- 📈 Análise de Cenários: Ferramenta estratégica para simular o impacto de mudanças de custo e promoções.
+
+- 📊 Relatórios: Geração e exportação de relatórios em PDF com os dados dos pratos.
+
+- 💡 Seções de Ajuda: Páginas "Aprenda a Precificar" e "Central de Ajuda" com conteúdo educativo e FAQ.
 
 ## 🎓 Contexto Acadêmico
 

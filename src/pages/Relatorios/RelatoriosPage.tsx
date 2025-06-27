@@ -124,20 +124,22 @@ export const RelatoriosPage: React.FC<RelatoriosPageProps> = ({ navigateTo, prat
     return (
         <div className="flex min-h-screen bg-gray-100">
             <Sidebar navigateTo={navigateTo} activePage="relatorios" />
-            <main className="flex-1 p-6 sm:p-10">
+            <main className="flex-1 lg:ml-0 p-4 sm:p-6 lg:p-10">
                 <div className="container mx-auto">
-                    <h2 className="text-3xl font-bold text-gray-800 mb-2">Relatórios e Análises</h2>
-                    <p className="text-gray-600 mb-8">Filtre seus pratos, analise a composição de custos e exporte seus dados.</p>
+                    <div className="mt-12 lg:mt-0">
+                        <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-2">Relatórios e Análises</h2>
+                        <p className="text-gray-600 mb-6 sm:mb-8">Filtre seus pratos, analise a composição de custos e exporte seus dados.</p>
+                    </div>
 
-                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
                         {/* Coluna de Filtros e Lista */}
-                        <div className="lg:col-span-1 bg-white p-6 rounded-2xl shadow-md self-start">
+                        <div className="lg:col-span-1 bg-white p-4 sm:p-6 rounded-2xl shadow-md self-start">
                             <h3 className="font-bold text-lg mb-4">Filtros</h3>
                             <div className="space-y-4 mb-6">
-                                <select value={filtroCategoria} onChange={e => setFiltroCategoria(e.target.value)} className="w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-lg">
+                                <select value={filtroCategoria} onChange={e => setFiltroCategoria(e.target.value)} className="w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-lg text-sm">
                                     {categoriasUnicas.map(cat => <option key={cat} value={cat}>{cat === 'todos' ? 'Todas as Categorias' : cat}</option>)}
                                 </select>
-                                <select value={filtroRentabilidade} onChange={e => setFiltroRentabilidade(e.target.value as any)} className="w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-lg">
+                                <select value={filtroRentabilidade} onChange={e => setFiltroRentabilidade(e.target.value as any)} className="w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-lg text-sm">
                                     <option value="todos">Toda Rentabilidade</option>
                                     <option value="ok">Margem OK</option>
                                     <option value="atencao">Margem Baixa (Atenção)</option>
@@ -147,22 +149,23 @@ export const RelatoriosPage: React.FC<RelatoriosPageProps> = ({ navigateTo, prat
                             <button
                                 onClick={handleGeneratePdf}
                                 disabled={isGeneratingPdf}
-                                className="w-full bg-blue-600 text-white px-5 py-3 rounded-lg hover:bg-blue-700 transition font-bold flex items-center justify-center gap-2 disabled:bg-blue-400 disabled:cursor-wait"
+                                className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg hover:bg-blue-700 transition font-bold flex items-center justify-center gap-2 disabled:bg-blue-400 disabled:cursor-wait text-sm"
                             >
-                                {isGeneratingPdf ? <Loader2 className="animate-spin" /> : <FileDown size={20} />}
-                                {isGeneratingPdf ? 'Gerando PDF...' : `Exportar ${pratosFiltrados.length} Pratos`}
+                                {isGeneratingPdf ? <Loader2 className="animate-spin" size={18} /> : <FileDown size={18} />}
+                                <span className="hidden sm:inline">{isGeneratingPdf ? 'Gerando PDF...' : `Exportar ${pratosFiltrados.length} Pratos`}</span>
+                                <span className="sm:hidden">{isGeneratingPdf ? 'Gerando...' : 'Exportar'}</span>
                             </button>
                             <hr className="my-6" />
-                            <div className="space-y-2 max-h-96 overflow-y-auto pr-2">
+                            <div className="space-y-2 max-h-80 sm:max-h-96 overflow-y-auto pr-2">
                                 {pratosFiltrados.map(prato => (
                                     <div
                                         key={prato.id}
                                         onClick={() => setSelectedPratoId(prato.id)}
                                         className={`p-3 rounded-lg cursor-pointer transition-all ${selectedPratoId === prato.id ? 'bg-green-100 ring-2 ring-green-500' : 'hover:bg-gray-100'}`}
                                     >
-                                        <p className="font-bold text-gray-800">{prato.nome}</p>
-                                        <div className="flex justify-between items-center text-sm mt-1">
-                                            <span className={`px-2 py-1 text-xs font-bold rounded-full ${getStatusIndicator(prato.status).color}`}>{getStatusIndicator(prato.status).text}</span>
+                                        <p className="font-bold text-gray-800 text-sm">{prato.nome}</p>
+                                        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center text-xs mt-1 gap-1">
+                                            <span className={`px-2 py-1 text-xs font-bold rounded-full ${getStatusIndicator(prato.status).color} w-fit`}>{getStatusIndicator(prato.status).text}</span>
                                             <span className={`font-bold ${prato.margem < 0 ? 'text-red-500' : 'text-green-600'}`}>Margem: {prato.margem}%</span>
                                         </div>
                                     </div>
@@ -171,29 +174,29 @@ export const RelatoriosPage: React.FC<RelatoriosPageProps> = ({ navigateTo, prat
                         </div>
 
                         {/* Coluna de Análise e Gráficos */}
-                        <div className="lg:col-span-2 bg-white p-6 rounded-2xl shadow-md min-h-[500px]">
+                        <div className="lg:col-span-2 bg-white p-4 sm:p-6 rounded-2xl shadow-md min-h-[400px] sm:min-h-[500px]">
                             {selectedPrato ? (
                                 <div>
-                                    <h3 className="font-bold text-2xl text-center mb-1">{selectedPrato.nome}</h3>
-                                    <p className="text-center text-gray-500 mb-4">Composição do Preço de Venda</p>
-                                    <div className="h-96">
+                                    <h3 className="font-bold text-xl sm:text-2xl text-center mb-1">{selectedPrato.nome}</h3>
+                                    <p className="text-center text-gray-500 mb-4 text-sm sm:text-base">Composição do Preço de Venda</p>
+                                    <div className="h-80 sm:h-96">
                                         <ResponsiveContainer width="100%" height="100%">
                                             <PieChart>
-                                                <Pie data={getPratoCostDetails(selectedPrato)} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={120} labelLine={false} label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}>
+                                                <Pie data={getPratoCostDetails(selectedPrato)} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={window.innerWidth < 640 ? 80 : 120} labelLine={false} label={window.innerWidth >= 640 ? ({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%` : false}>
                                                     {getPratoCostDetails(selectedPrato).map((_entry, index) => (
                                                         <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                                                     ))}
                                                 </Pie>
                                                 <Tooltip formatter={(value: number) => `R$ ${value.toFixed(2)}`} />
-                                                <Legend />
+                                                <Legend wrapperStyle={{fontSize: window.innerWidth < 640 ? '12px' : '14px'}} />
                                             </PieChart>
                                         </ResponsiveContainer>
                                     </div>
                                 </div>
                             ) : (
-                                <div>
-                                    <h3 className="font-bold text-2xl text-center mb-1">Análise Geral</h3>
-                                    <p className="text-center text-gray-500 mb-4">Selecione um prato na lista para ver detalhes</p>
+                                <div className="flex flex-col items-center justify-center h-full">
+                                    <h3 className="font-bold text-xl sm:text-2xl text-center mb-1">Análise Geral</h3>
+                                    <p className="text-center text-gray-500 mb-4 text-sm sm:text-base">Selecione um prato na lista para ver detalhes</p>
                                 </div>
                             )}
                         </div>

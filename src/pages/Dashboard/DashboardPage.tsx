@@ -28,16 +28,17 @@ export const DashboardPage: React.FC<DashboardProps> = ({ navigateTo, user, prat
     return (
         <div className="flex min-h-screen bg-gray-100">
             <Sidebar navigateTo={navigateTo} activePage="dashboard" />
-            <main className="flex-1 p-6 sm:p-10 pb-24">
+            <main className="flex-1 lg:ml-0 p-4 sm:p-6 lg:p-10 pb-24">
                 <div className="container mx-auto">
-                    <div className="flex justify-between items-center mb-8">
-                        <div>
-                            <h2 className="text-3xl font-bold text-gray-800">Dashboard</h2>
+                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 sm:mb-8 gap-4">
+                        <div className="mt-12 lg:mt-0">
+                            <h2 className="text-2xl sm:text-3xl font-bold text-gray-800">Dashboard</h2>
                             <p className="text-gray-600">Resumo da saúde financeira do seu negócio, {user.nome}.</p>
                         </div>
-                        <button onClick={() => navigateTo('simulador')} className="bg-green-600 text-white px-5 py-3 rounded-lg hover:bg-green-700 transition font-bold flex items-center gap-2">
+                        <button onClick={() => navigateTo('simulador')} className="w-full sm:w-auto bg-green-600 text-white px-5 py-3 rounded-lg hover:bg-green-700 transition font-bold flex items-center justify-center gap-2">
                             <PlusCircle size={20} />
-                            Simular Novo Prato
+                            <span className="hidden sm:inline">Simular Novo Prato</span>
+                            <span className="sm:hidden">Novo Prato</span>
                         </button>
                     </div>
 
@@ -47,26 +48,26 @@ export const DashboardPage: React.FC<DashboardProps> = ({ navigateTo, user, prat
                         <DashboardCard title="Pratos com Prejuízo" value={pratosComPrejuizo.toString()} icon={DollarSign} colorClass="bg-red-500" navigateTo={navigateTo} page="listaPratos" />
                     </div>
 
-                    <div className="bg-white p-6 rounded-2xl shadow-md">
-                        <h3 className="text-xl font-bold text-gray-800 mb-4">Últimos Pratos Simulados</h3>
-                        <div className="overflow-x-auto">
-                            <table className="w-full text-left">
+                    <div className="bg-white p-4 sm:p-6 rounded-2xl shadow-md">
+                        <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-4">Últimos Pratos Simulados</h3>
+                        <div className="overflow-x-auto table-scroll">
+                            <table className="w-full text-left min-w-[500px]">
                                 <thead>
                                     <tr className="border-b-2 border-gray-100">
-                                        <th className="p-3 text-sm font-semibold text-gray-500">Nome do Prato</th>
-                                        <th className="p-3 text-sm font-semibold text-gray-500">Margem Atual</th>
-                                        <th className="p-3 text-sm font-semibold text-gray-500">Status</th>
-                                        <th className="p-3 text-sm font-semibold text-gray-500">Ações</th>
+                                        <th className="p-2 sm:p-3 text-xs sm:text-sm font-semibold text-gray-500">Nome do Prato</th>
+                                        <th className="p-2 sm:p-3 text-xs sm:text-sm font-semibold text-gray-500">Margem</th>
+                                        <th className="p-2 sm:p-3 text-xs sm:text-sm font-semibold text-gray-500">Status</th>
+                                        <th className="p-2 sm:p-3 text-xs sm:text-sm font-semibold text-gray-500">Ações</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {ultimosPratos.map(prato => (
                                         <tr key={prato.id} className="border-b border-gray-100 hover:bg-gray-50">
-                                            <td className="p-3 font-medium text-gray-800">{prato.nome}</td>
-                                            <td className={`p-3 font-bold ${prato.margem < 0 ? 'text-red-500' : 'text-green-600'}`}>{prato.margem}%</td>
-                                            <td className="p-3">{getStatusIndicator(prato.status)}</td>
-                                            <td className="p-3">
-                                                <button onClick={() => navigateTo('simulador', prato)} className="text-blue-600 hover:underline text-sm font-medium">Editar/Simular</button>
+                                            <td className="p-2 sm:p-3 font-medium text-gray-800 text-sm">{prato.nome}</td>
+                                            <td className={`p-2 sm:p-3 font-bold text-sm ${prato.margem < 0 ? 'text-red-500' : 'text-green-600'}`}>{prato.margem}%</td>
+                                            <td className="p-2 sm:p-3">{getStatusIndicator(prato.status)}</td>
+                                            <td className="p-2 sm:p-3">
+                                                <button onClick={() => navigateTo('simulador', prato)} className="text-blue-600 hover:underline text-xs sm:text-sm font-medium">Editar</button>
                                             </td>
                                         </tr>
                                     ))}

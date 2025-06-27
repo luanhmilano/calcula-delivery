@@ -1,0 +1,86 @@
+/* Estilos customizados para responsividade */
+
+/* Animação para fade-in */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
+}
+
+/* Ajustes para mobile */
+@media (max-width: 640px) {
+  /* Reduzir padding em cards pequenos */
+  .mobile-card-padding {
+    padding: 1rem !important;
+  }
+  
+  /* Texto menor em mobile */
+  .mobile-text-sm {
+    font-size: 0.875rem !important;
+  }
+  
+  /* Botões full-width em mobile */
+  .mobile-full-width {
+    width: 100% !important;
+  }
+}
+
+/* Ajustes para tablets */
+@media (min-width: 641px) and (max-width: 1024px) {
+  /* Ajustar grid para tablets */
+  .tablet-grid-adjust {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* Melhorias para scroll horizontal em tabelas */
+.table-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e0 #f7fafc;
+}
+
+.table-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.table-scroll::-webkit-scrollbar-track {
+  background: #f7fafc;
+  border-radius: 3px;
+}
+
+.table-scroll::-webkit-scrollbar-thumb {
+  background: #cbd5e0;
+  border-radius: 3px;
+}
+
+.table-scroll::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0;
+}
+
+/* Ajustes para sidebar mobile */
+@media (max-width: 1024px) {
+  .main-content-mobile {
+    margin-left: 0 !important;
+    padding-top: 4rem;
+  }
+}
+
+/* Melhorias para gráficos em mobile */
+@media (max-width: 640px) {
+  .recharts-legend-wrapper {
+    font-size: 12px !important;
+  }
+  
+  .recharts-tooltip-wrapper {
+    font-size: 12px !important;
+  }
+}

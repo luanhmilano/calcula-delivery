@@ -40,23 +40,25 @@ export const PerfilPage: React.FC<PerfilPageProps> = ({ navigateTo, user, onUpda
     return (
         <div className="flex min-h-screen bg-gray-100">
             <Sidebar navigateTo={navigateTo} activePage="perfil" />
-            <main className="flex-1 p-6 sm:p-10">
+            <main className="flex-1 lg:ml-0 p-4 sm:p-6 lg:p-10">
                 <div className="container mx-auto">
-                    <h2 className="text-4xl font-bold text-gray-800 mb-8">Perfil e Configurações</h2>
+                    <div className="mt-12 lg:mt-0">
+                        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-800 mb-6 sm:mb-8">Perfil e Configurações</h2>
+                    </div>
 
-                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 items-start">
                         {/* Coluna do Perfil */}
-                        <div className="lg:col-span-1 space-y-8">
+                        <div className="lg:col-span-1 space-y-6 lg:space-y-8">
                             <ConfigCard title="Perfil do Negócio">
                                 <div className="flex flex-col items-center text-center">
                                     <div className="relative mb-4">
                                         <img 
                                             src={user.fotoUrl || `https://ui-avatars.com/api/?name=${user.nomeNegocio}&background=0D834E&color=fff&size=128`} 
                                             alt="Foto do perfil"
-                                            className="w-32 h-32 rounded-full object-cover ring-4 ring-green-200"
+                                            className="w-24 h-24 sm:w-32 sm:h-32 rounded-full object-cover ring-4 ring-green-200"
                                         />
                                         <button className="absolute bottom-1 right-1 bg-green-600 text-white p-2 rounded-full hover:bg-green-700 transition">
-                                            <Camera size={16} />
+                                            <Camera size={14} className="sm:w-4 sm:h-4" />
                                         </button>
                                     </div>
                                     <FormInput label="Nome do Estabelecimento" value={nomeNegocio} onChange={e => setNomeNegocio(e.target.value)} type="text" />
@@ -72,7 +74,7 @@ export const PerfilPage: React.FC<PerfilPageProps> = ({ navigateTo, user, onUpda
                         </div>
 
                         {/* Coluna de Configurações */}
-                        <div className="lg:col-span-2 space-y-8">
+                        <div className="lg:col-span-2 space-y-6 lg:space-y-8">
                              <ConfigCard 
                                 title="Padrões do Simulador"
                                 footer={
@@ -81,9 +83,11 @@ export const PerfilPage: React.FC<PerfilPageProps> = ({ navigateTo, user, onUpda
                                     </p>
                                 }
                             >
-                                <FormInput label="Custos Fixos Mensais Padrão" unit="R$" value={custosFixos} onChange={e => setCustosFixos(parseFloat(e.target.value) || 0)} />
-                                <FormInput label="Estimativa de Pratos Vendidos/Mês" value={pratosMes} onChange={e => setPratosMes(parseFloat(e.target.value) || 0)} />
-                                <FormInput label="Margem Mínima de Alerta Padrão" unit="%" value={margemPadrao} onChange={e => setMargemPadrao(parseFloat(e.target.value) || 0)} />
+                                <div className="space-y-4">
+                                    <FormInput label="Custos Fixos Mensais Padrão" unit="R$" value={custosFixos} onChange={e => setCustosFixos(parseFloat(e.target.value) || 0)} />
+                                    <FormInput label="Estimativa de Pratos Vendidos/Mês" value={pratosMes} onChange={e => setPratosMes(parseFloat(e.target.value) || 0)} />
+                                    <FormInput label="Margem Mínima de Alerta Padrão" unit="%" value={margemPadrao} onChange={e => setMargemPadrao(parseFloat(e.target.value) || 0)} />
+                                </div>
                             </ConfigCard>
                              <ConfigCard 
                                 title="Preferências de Exibição"
@@ -104,11 +108,11 @@ export const PerfilPage: React.FC<PerfilPageProps> = ({ navigateTo, user, onUpda
                             </ConfigCard>
                         </div>
                     </div>
-                    <div className="mt-8 flex justify-end">
+                    <div className="mt-6 sm:mt-8 flex justify-center sm:justify-end">
                         <button
                             onClick={handleSave}
                             disabled={saveStatus !== 'idle'}
-                            className={`px-8 py-3 rounded-lg font-bold text-white transition-all flex items-center gap-2 ${
+                            className={`w-full sm:w-auto px-6 sm:px-8 py-3 rounded-lg font-bold text-white transition-all flex items-center justify-center gap-2 ${
                                 saveStatus === 'idle' ? 'bg-green-600 hover:bg-green-700' : 
                                 saveStatus === 'saving' ? 'bg-gray-400' : 'bg-blue-500'
                             }`}

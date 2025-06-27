@@ -22,19 +22,19 @@ export const AprendaAPrecificarPage: React.FC<AprendaAPrecificarPageProps> = ({ 
     return (
         <div className="flex min-h-screen bg-gray-100">
             <Sidebar navigateTo={navigateTo} activePage="aprenda" />
-            <main className="flex-1 p-6 sm:p-10">
+            <main className="flex-1 lg:ml-0 p-4 sm:p-6 lg:p-10">
                 <div className="container mx-auto">
-                    <button onClick={() => navigateTo('dashboard')} className="flex items-center gap-2 text-green-600 font-medium mb-6 hover:underline">
+                    <button onClick={() => navigateTo('dashboard')} className="flex items-center gap-2 text-green-600 font-medium mb-6 hover:underline mt-12 lg:mt-0">
                        <ArrowLeft size={18} />
                        Voltar para o Dashboard
                     </button>
                     
-                    <div className="mb-8">
-                        <h2 className="text-4xl font-bold text-gray-800">Aprenda a Precificar</h2>
-                        <p className="text-lg text-gray-600 mt-2">Conceitos chave para dominar a arte da precificação e aumentar seu lucro.</p>
+                    <div className="mb-6 sm:mb-8">
+                        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-800">Aprenda a Precificar</h2>
+                        <p className="text-base sm:text-lg text-gray-600 mt-2">Conceitos chave para dominar a arte da precificação e aumentar seu lucro.</p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
                         <ArticleCard icon={<DollarSign />} title="Custo Fixo vs. Custo Variável">
                             <strong>Custos Fixos</strong> são despesas que não mudam com o volume de vendas (ex: aluguel, internet). <strong>Custos Variáveis</strong> mudam conforme você vende mais (ex: ingredientes, embalagens). Separar os dois é o primeiro passo para uma precificação correta.
                         </ArticleCard>
