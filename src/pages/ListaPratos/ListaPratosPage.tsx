@@ -133,6 +133,7 @@ export const ListaPratosPage = ({
                         <div>
                           {prato.nome}
                           <div className="sm:hidden text-xs text-gray-500 mt-1">{prato.categoria}</div>
+                          <div className="md:hidden mt-1">{getStatusIndicator(prato.status)}</div>
                         </div>
                       </td>
                       <td className="p-2 sm:p-3 text-gray-600 text-sm hidden sm:table-cell">{prato.categoria}</td>

@@ -42,10 +42,12 @@ export const DashboardPage: React.FC<DashboardProps> = ({ navigateTo, user, prat
                         </button>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
                         <DashboardCard title="Total de Pratos" value={pratos.length.toString()} icon={PieChartIcon} colorClass="bg-blue-500" navigateTo={navigateTo} page="listaPratos" />
                         <DashboardCard title="Margem Média" value={`${margemMedia}%`} icon={BarChart2} colorClass="bg-green-500" navigateTo={navigateTo} page="relatorios"/>
-                        <DashboardCard title="Pratos com Prejuízo" value={pratosComPrejuizo.toString()} icon={DollarSign} colorClass="bg-red-500" navigateTo={navigateTo} page="listaPratos" />
+                        <div className="sm:col-span-2 lg:col-span-1">
+                            <DashboardCard title="Pratos com Prejuízo" value={pratosComPrejuizo.toString()} icon={DollarSign} colorClass="bg-red-500" navigateTo={navigateTo} page="listaPratos" />
+                        </div>
                     </div>
 
                     <div className="bg-white p-4 sm:p-6 rounded-2xl shadow-md">
@@ -56,16 +58,21 @@ export const DashboardPage: React.FC<DashboardProps> = ({ navigateTo, user, prat
                                     <tr className="border-b-2 border-gray-100">
                                         <th className="p-2 sm:p-3 text-xs sm:text-sm font-semibold text-gray-500">Nome do Prato</th>
                                         <th className="p-2 sm:p-3 text-xs sm:text-sm font-semibold text-gray-500">Margem</th>
-                                        <th className="p-2 sm:p-3 text-xs sm:text-sm font-semibold text-gray-500">Status</th>
+                                        <th className="p-2 sm:p-3 text-xs sm:text-sm font-semibold text-gray-500 hidden sm:table-cell">Status</th>
                                         <th className="p-2 sm:p-3 text-xs sm:text-sm font-semibold text-gray-500">Ações</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {ultimosPratos.map(prato => (
                                         <tr key={prato.id} className="border-b border-gray-100 hover:bg-gray-50">
-                                            <td className="p-2 sm:p-3 font-medium text-gray-800 text-sm">{prato.nome}</td>
+                                            <td className="p-2 sm:p-3 font-medium text-gray-800 text-sm">
+                                                <div>
+                                                    {prato.nome}
+                                                    <div className="sm:hidden">{getStatusIndicator(prato.status)}</div>
+                                                </div>
+                                            </td>
                                             <td className={`p-2 sm:p-3 font-bold text-sm ${prato.margem < 0 ? 'text-red-500' : 'text-green-600'}`}>{prato.margem}%</td>
-                                            <td className="p-2 sm:p-3">{getStatusIndicator(prato.status)}</td>
+                                            <td className="p-2 sm:p-3 hidden sm:table-cell">{getStatusIndicator(prato.status)}</td>
                                             <td className="p-2 sm:p-3">
                                                 <button onClick={() => navigateTo('simulador', prato)} className="text-blue-600 hover:underline text-xs sm:text-sm font-medium">Editar</button>
                                             </td>
