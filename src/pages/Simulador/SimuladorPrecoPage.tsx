@@ -116,35 +116,35 @@ export const SimuladorPrecoPage = ({ navigateTo, pratoInicial, onSave, isTestMod
     return (
         <div className="bg-gray-100 min-h-screen">
             {!isTestMode && <Header user={{ nome: "Usuário", email: "usuario@email.com", nomeNegocio: "Meu Negócio" }} onLogout={() => {}} navigateTo={navigateTo} />}
-            <div className="container mx-auto p-4 sm:p-8">
+            <div className="container mx-auto p-4 sm:p-6 lg:p-8">
                 {isTestMode && (
-                    <div className="text-center mb-8 bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 rounded-md">
+                    <div className="text-center mb-6 sm:mb-8 bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 rounded-md">
                         <p className="font-bold">Modo de Teste</p>
-                        <p>Você está usando uma versão simplificada. <a href="#" onClick={(e) => { e.preventDefault(); navigateTo('cadastro') }} className="font-bold underline">Crie uma conta</a> para salvar pratos e acessar todos os recursos.</p>
+                        <p className="text-sm sm:text-base">Você está usando uma versão simplificada. <a href="#" onClick={(e) => { e.preventDefault(); navigateTo('cadastro') }} className="font-bold underline">Crie uma conta</a> para salvar pratos e acessar todos os recursos.</p>
                     </div>
                 )}
                 <button onClick={() => navigateTo(isTestMode ? 'landing' : 'dashboard')} className="flex items-center gap-2 text-green-600 font-medium mb-4 hover:underline">
                     <ArrowLeft size={18} />
                     Voltar
                 </button>
-                <h2 className="text-3xl font-bold text-gray-800 mb-6">{pratoInicial ? 'Editando / Simulando Prato' : 'Simulador de Preço de Venda'}</h2>
+                <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-4 sm:mb-6">{pratoInicial ? 'Editando / Simulando Prato' : 'Simulador de Preço de Venda'}</h2>
 
-                <div className="flex flex-col lg:flex-row gap-8">
+                <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
                     {/* Coluna de Formulários */}
-                    <div className="lg:w-2/3 space-y-6">
-                        <div className="bg-white p-6 rounded-2xl shadow-md grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="lg:w-2/3 space-y-4 sm:space-y-6">
+                        <div className="bg-white p-4 sm:p-6 rounded-2xl shadow-md grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                             <div>
-                                <label className="text-xl font-medium text-gray-700">1. Nome do Prato</label>
-                                <input type="text" placeholder="Ex: Marmita de Frango" value={nomePrato} onChange={e => setNomePrato(e.target.value)} className="w-full mt-1 px-4 py-2 bg-gray-50 border border-gray-300 rounded-lg"/>
+                                <label className="text-lg sm:text-xl font-medium text-gray-700">1. Nome do Prato</label>
+                                <input type="text" placeholder="Ex: Marmita de Frango" value={nomePrato} onChange={e => setNomePrato(e.target.value)} className="w-full mt-1 px-4 py-2 bg-gray-50 border border-gray-300 rounded-lg text-sm sm:text-base"/>
                             </div>
                             <div>
-                                <label className="text-xl font-medium text-gray-700">Categoria</label>
-                                <input type="text" placeholder="Ex: Marmitas" value={categoria} onChange={e => setCategoria(e.target.value)} className="w-full mt-1 px-4 py-2 bg-gray-50 border border-gray-300 rounded-lg"/>
+                                <label className="text-lg sm:text-xl font-medium text-gray-700">Categoria</label>
+                                <input type="text" placeholder="Ex: Marmitas" value={categoria} onChange={e => setCategoria(e.target.value)} className="w-full mt-1 px-4 py-2 bg-gray-50 border border-gray-300 rounded-lg text-sm sm:text-base"/>
                             </div>
                         </div>
 
-                        <div className="bg-white p-6 rounded-2xl shadow-md">
-                            <h3 className="text-xl font-bold text-gray-700 mb-4">2. Ingredientes (CMV)</h3>
+                        <div className="bg-white p-4 sm:p-6 rounded-2xl shadow-md">
+                            <h3 className="text-lg sm:text-xl font-bold text-gray-700 mb-4">2. Ingredientes (CMV)</h3>
                             <div className="space-y-4">
                                 {ingredientes.map((ing) => (
                                     <IngredienteInputRow 
@@ -181,18 +181,18 @@ export const SimuladorPrecoPage = ({ navigateTo, pratoInicial, onSave, isTestMod
 
                     {/* Coluna de Resultados */}
                     <div className="lg:w-1/3">
-                        <div className="sticky top-24 bg-white p-6 rounded-2xl shadow-lg">
-                            <h3 className="text-2xl font-bold text-gray-800 mb-4">5. Simulação e Preço Final</h3>
+                        <div className="lg:sticky lg:top-24 bg-white p-4 sm:p-6 rounded-2xl shadow-lg">
+                            <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4">5. Simulação e Preço Final</h3>
                             <div className="mb-6">
                                 <label className="text-sm font-bold text-gray-600">Margem de Lucro Desejada</label>
                                 <div className="flex items-center mt-1">
-                                    <input type="number" value={margemLucroDesejada} onChange={e => setMargemLucroDesejada(parseFloat(e.target.value) || 0)} className="w-full px-3 py-2 text-xl font-bold bg-gray-50 border border-gray-300 rounded-md" />
-                                    <span className="text-gray-500 ml-2 text-xl font-bold">%</span>
+                                    <input type="number" value={margemLucroDesejada} onChange={e => setMargemLucroDesejada(parseFloat(e.target.value) || 0)} className="w-full px-3 py-2 text-lg sm:text-xl font-bold bg-gray-50 border border-gray-300 rounded-md" />
+                                    <span className="text-gray-500 ml-2 text-lg sm:text-xl font-bold">%</span>
                                 </div>
                             </div>
                             <div className="bg-green-50 p-4 rounded-lg space-y-3 text-center">
                                 <p className="text-sm text-green-800 font-semibold">PREÇO DE VENDA SUGERIDO</p>
-                                <p className="text-5xl font-extrabold text-green-700">R$ {calculos.precoDeVendaSugerido.toFixed(2).replace('.', ',')}</p>
+                                <p className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-green-700">R$ {calculos.precoDeVendaSugerido.toFixed(2).replace('.', ',')}</p>
                             </div>
                             <div className="mt-6 space-y-2 text-sm">
                                 <div className="flex justify-between">
@@ -209,7 +209,7 @@ export const SimuladorPrecoPage = ({ navigateTo, pratoInicial, onSave, isTestMod
                                     <span className={calculos.margemReal < 0 ? 'text-red-600' : 'text-green-600'}>{calculos.margemReal.toFixed(1).replace('.', ',')}%</span>
                                 </div>
                             </div>
-                            <div className="mt-6 h-48">
+                            <div className="mt-6 h-48 sm:h-56">
                                 <p className="text-center text-sm font-semibold text-gray-600 mb-2">Composição do Preço de Venda</p>
                                 <ResponsiveContainer width="100%" height="100%">
                                     <PieChart>
@@ -217,7 +217,7 @@ export const SimuladorPrecoPage = ({ navigateTo, pratoInicial, onSave, isTestMod
                                             {calculos.composicaoCustoData.map((_entry, index) => (<Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />))}
                                         </Pie>
                                         <Tooltip formatter={(value: number) => `R$ ${value.toFixed(2)}`} />
-                                        <Legend iconSize={10} layout="vertical" verticalAlign="middle" align="right" />
+                                        <Legend iconSize={8} layout="vertical" verticalAlign="middle" align="right" wrapperStyle={{fontSize: '12px'}} />
                                     </PieChart>
                                 </ResponsiveContainer>
                             </div>
